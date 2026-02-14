@@ -114,17 +114,21 @@
     const question = document.getElementById("question");
 
     function moveNoButton() {
-    noBtn.style.position = "fixed";  // important
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-}
+        // Take it out of flex flow
+        noBtn.style.position = "fixed";
+        noBtn.style.zIndex = "999";
+
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
     }
 
-    // For mobile touch
+    // Desktop
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    // Mobile
     noBtn.addEventListener("touchstart", moveNoButton);
-    noBtn.addEventListener("mouseover", moveNoButton);
 
     yesBtn.addEventListener("click", () => {
         question.style.display = "none";
@@ -133,7 +137,6 @@
         message.style.display = "block";
     });
 
-    // Floating hearts
     function createHeart() {
         const heart = document.createElement("div");
         heart.className = "heart";
@@ -142,7 +145,6 @@
         heart.style.fontSize = Math.random() * 15 + 15 + "px";
         heart.style.animationDuration = Math.random() * 3 + 3 + "s";
         document.body.appendChild(heart);
-
         setTimeout(() => heart.remove(), 6000);
     }
 
