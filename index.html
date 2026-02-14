@@ -49,9 +49,14 @@
     #noBtn {
         background: white;
         color: #ff003c;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+    }
+    
+    .btn-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    position: relative;
+    height: 120px;
     }
 
     #message {
@@ -86,9 +91,10 @@
 <div class="container">
     <h1 id="question">Hindavi Will you be my Valentine? 💖</h1>
 
-    <div style="position: relative; height: 120px;">
-        <button id="yesBtn">Yes ❤️</button>
-        <button id="noBtn">No 💔</button>
+    <div class="btn-wrap">
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 💔</button>
+</div>
     </div>
 
     <div id="message">
